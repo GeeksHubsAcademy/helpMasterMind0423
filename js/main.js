@@ -35,28 +35,34 @@ let contador = 1;
 const compruebaGanadora = () => {
   //Hardcodeo la combinación por la que yo apuesto
   let combinacionQueJuega = ["naranja", "rosa", "verde", "verde"];
+  let combinacionFiltrar = combinacionQueJuega;
 
   let blancas = 0;
   let negras = 0;
 
-  console.log(combinacionQueJuega, " soy la que juega");
+  console.log(combinacionFiltrar, " soy la que juega");
   console.log(arrayGanador, " soy la que gana...");
 
   for (let i = 0; i < arrayGanador.length; i++) {
-    if (arrayGanador.includes(combinacionQueJuega[i])) {
+    if (arrayGanador.includes(combinacionFiltrar[i])) {
       //El include saca la ficha blanca......
 
       //Pero antes de darle la ficha blanca, comprobamos si es negra....
-      if (arrayGanador[i] === combinacionQueJuega[i]) {
+      if (arrayGanador[i] === combinacionFiltrar[i]) {
         //Esto es para ver si tenemos la ficha negra....
         negras += 1;
         console.log("he ganado..... ", negras, " fichas negras");
+
+        combinacionFiltrar.filter( quitamos => quitamos !== arrayGanador[i]);
 
         if (negras === 4) {
           //Hemos ganado la partida...entonces nos vamos a otro html...
           window.location.href = "../pages/winner.html";
         }
       } else {
+
+        combinacionFiltrar.filter( quitamos => quitamos !== arrayGanador[i]);
+        
         blancas += 1;
         console.log("tenemos ", blancas, " ficha blanca");
       }
